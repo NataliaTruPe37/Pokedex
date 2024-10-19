@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pokemon.name %> - Detalles</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="pokemon-details">
+        <h1><%= pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) %></h1>
+        <img src="<%= pokemon.sprites.front_default %>" alt="<%= pokemon.name %>">
+        
+        <h2>Información</h2>
+        <p><strong>Nombre:</strong> <%= pokemon.name %></p>
+        <p><strong>Tipo:</strong> 
+            <% pokemon.types.forEach(type => { %>
+                <%= type.type.name %><% if (pokemon.types.length > 1) { %>, <% } %>
+            <% }); %>
+        </p>
+        <p><strong>Experiencia:</strong> <%= pokemon.base_experience %></p>
+        <p><strong>Peso:</strong> <%= pokemon.weight %> kg</p>
+        <p><strong>Altura:</strong> <%= pokemon.height %> m</p>
+
+        <h2>Movimientos</h2>
+        <ul>
+            <% pokemon.moves.slice(0, 5).forEach(move => { %> <!-- Muestra solo los primeros 5 movimientos -->
+                <li><%= move.move.name %></li>
+            <% }); %>
+        </ul>
+
+        <h2>Habilidades</h2>
+        <ul>
+            <% pokemon.abilities.forEach(ability => { %>
+                <li><%= ability.ability.name %></li>
+            <% }); %>
+        </ul>
+
+        <a href="/" class="back-button">Volver a la lista</a>
+    </div>
+</body>
+</html>

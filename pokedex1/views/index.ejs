@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pokédex</h1>
+        <div id="pokemon-list" class="pokemon-list">
+            <% pokemons.forEach(pokemon => { %>
+                <div class="pokemon-item" data-id="<%= pokemon.id %>">
+                    <img src="<%= pokemon.sprites.front_default %>" alt="<%= pokemon.name %>">
+                    <h3><%= pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) %></h3> 
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <script>
+        const pokemonItems = document.querySelectorAll('.pokemon-item');
+        pokemonItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const pokemonId = this.getAttribute('data-id');
+                window.location.href = `/pokemon/${pokemonId}`; 
+            });
+        });
+    </script>
+</body>
+</html>
