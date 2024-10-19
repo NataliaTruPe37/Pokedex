@@ -2,7 +2,7 @@ const pokemonList = document.getElementById('pokemon-list');
 const pokemonDisplay = document.getElementById('pokemon-display');
 
 async function fetchAllPokemons() {
-    for (let i = 1; i <= 898; i++) { // 898 es el número total de Pokémon
+    for (let i = 1; i <= 898; i++) { 
         await fetchPokemon(i);
     }
 }
@@ -55,5 +55,4 @@ function hideDetails() {
     pokemonDisplay.style.display = 'none';
 }
 
-// Carga todos los Pokémon al iniciar
 fetchAllPokemons();
